@@ -20,24 +20,37 @@ class DicePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return
       SafeArea(
-        child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          SizedBox(
-            height: double.infinity,
-          ),
-          //SizedBox(
-          //  width: double.infinity,
-          //),
-          Expanded(
-            flex: 1, // flex is division ratio 1:1 is default. Just here for reference.
-            child: Image(image: AssetImage('images/dice1.png'),),),
-          Expanded(
-            flex: 1,
-            child: Image(image: AssetImage('images/dice2.png'),),),
+        child: Center(
+          child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            //SizedBox(
+            //  height: double.infinity,
+            //),
+            //SizedBox(
+            //  width: double.infinity,
+            //),
+            // Sizedbox isn't necessary. Better use a centre widget.
+            Expanded(
+              flex: 1, // flex is division ratio 1:1 is default. Just here for reference.
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Image.asset('images/dice4.png'),
+              ),
+            ),
+              //Image(image: AssetImage('images/dice1.png'),),),
+            Expanded(
+              flex: 1,
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Image.asset('images/dice5.png'),
+              ),
+              //child: Image(image: AssetImage('images/dice2.png'),),),
+            ),
 
-        ],
+          ],
+          ),
         ),
       );
   }
