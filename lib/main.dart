@@ -18,20 +18,27 @@ void main() {
 class DicePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        SizedBox(
-          height: double.infinity,
+    return
+      SafeArea(
+        child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SizedBox(
+            height: double.infinity,
+          ),
+          //SizedBox(
+          //  width: double.infinity,
+          //),
+          Expanded(
+            flex: 1, // flex is division ratio 1:1 is default. Just here for reference.
+            child: Image(image: AssetImage('images/dice1.png'),),),
+          Expanded(
+            flex: 1,
+            child: Image(image: AssetImage('images/dice2.png'),),),
+
+        ],
         ),
-        Expanded(
-          flex: 1, // flex is division ratio 1:1 is default. Just here for reference.
-          child: Image(image: AssetImage('images/dice1.png'),),),
-        Expanded(
-          flex: 1,
-          child: Image(image: AssetImage('images/dice2.png'),),),
-      ],
-    );
+      );
   }
 }
