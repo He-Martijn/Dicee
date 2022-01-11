@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
 
 void main() {
   return runApp(
@@ -48,8 +49,7 @@ class _DicePageState extends State<DicePage> {
               child: TextButton(
                 onPressed: (){
                   setState(() {
-                    if (leftDiceNumber <= 5){
-                      leftDiceNumber++;} else {leftDiceNumber = 1;};
+                    leftDiceNumber = Random().nextInt(5) + 1;
                   });
                   print('left button pressed');
                   print('The value for leftDiceNumber = $leftDiceNumber');
@@ -63,9 +63,7 @@ class _DicePageState extends State<DicePage> {
               child: TextButton(
                   onPressed: (){
                     setState(() {
-                      if (rightDiceNumber<=5){
-                        rightDiceNumber++;
-                      }else{rightDiceNumber=1;};
+                      rightDiceNumber = Random().nextInt(5) + 1;
                     });
                     print('right button pressed');
                     print('The value for rightDiceNumber = $rightDiceNumber');
@@ -78,8 +76,6 @@ class _DicePageState extends State<DicePage> {
         ),
       ),
     );
-
-
   }
 }
 
