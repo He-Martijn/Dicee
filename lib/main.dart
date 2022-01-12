@@ -26,9 +26,31 @@ class DicePage extends StatefulWidget {
   _DicePageState createState() => _DicePageState();
 }
 
+int dicePicker(){
+  print('dicePicker is called');
+  int number = 0;
+  number = Random().nextInt(6)+1;
+  print('number = $number');
+  return number;
+
+  /*rightDiceNumber = (Random().nextInt(6))+1;
+  print('rightDiceNumber = $rightDiceNumber');
+  leftDiceNumber = Random().nextInt(6)+1;
+  print('leftDiceNumber = $leftDiceNumber');*/
+}
+
 class _DicePageState extends State<DicePage> {
   int leftDiceNumber = 1;
   int rightDiceNumber = 2;
+  // This function added for the challenge to put everything in a function:
+  void changeDiceFace(){
+    print('changeDiceFace is called');
+    setState(() {
+      leftDiceNumber=dicePicker();
+      rightDiceNumber=dicePicker();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -48,14 +70,8 @@ class _DicePageState extends State<DicePage> {
               flex: 1, // flex is division ratio 1:1 is default. Just here for reference.
               child: TextButton(
                 onPressed: (){
-                  setState(() {
-                    int betweenInt = Random().nextInt(6);
-                    print('In setState betweenInt = $betweenInt');
-                    leftDiceNumber = betweenInt+1;
-                    print('In setState leftDiceNumber = $leftDiceNumber');
-                  });
-                  print('left button pressed');
-                  print('The value for leftDiceNumber = $leftDiceNumber');
+                  print('left button is pressed');
+                  changeDiceFace();
                 },
                 child: Image.asset('images/dice$leftDiceNumber.png'),
               ),
@@ -65,12 +81,9 @@ class _DicePageState extends State<DicePage> {
               flex: 1,
               child: TextButton(
                   onPressed: (){
-                    setState(() {
-                      rightDiceNumber = (Random().nextInt(6))+1;
-                      print('rightDiceNumber = $rightDiceNumber');
-                    });
-                    print('right button pressed');
-                    print('The value for rightDiceNumber = $rightDiceNumber');
+                    print('right button is pressed');
+                    //dicePicker();
+                    changeDiceFace();
                   },
                   child: Image.asset('images/dice$rightDiceNumber.png')),
               //child: Image(image: AssetImage('images/dice2.png'),),),
